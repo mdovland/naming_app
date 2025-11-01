@@ -1,0 +1,15 @@
+{
+  "name": "domain-name-checker",
+  "version": "1.0.0",
+  "description": "Domain name availability checker for Nordic AI company",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": ["domain", "checker", "ai", "nordic"],
+  "author": "",
+  "license": "MIT"
+}
