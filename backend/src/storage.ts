@@ -12,7 +12,10 @@ export interface DomainSuggestion {
   lastChecked?: string;
 }
 
-const DATA_DIR = path.join(__dirname, '../data');
+// Use environment variable or default path
+// In production (Railway), volume is at /app/backend/data
+// In development, it's relative to dist folder
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../data');
 const DATA_FILE = path.join(DATA_DIR, 'domains.json');
 
 // Ensure data directory exists
