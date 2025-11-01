@@ -28,10 +28,13 @@ function ensureDataDir() {
 
 // Initialize storage file if it doesn't exist
 function initializeStorage() {
+  console.log(`📂 Storage location: ${DATA_DIR}`);
   ensureDataDir();
   if (!fs.existsSync(DATA_FILE)) {
     fs.writeFileSync(DATA_FILE, JSON.stringify([], null, 2));
-    console.log('📝 Created domains.json file');
+    console.log('📝 Created domains.json file at:', DATA_FILE);
+  } else {
+    console.log('📄 Found existing domains.json at:', DATA_FILE);
   }
 }
 
@@ -42,7 +45,9 @@ export function getAllDomains(): DomainSuggestion[] {
   try {
     initializeStorage();
     const data = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(data);
+    const domains = JSON.parse(data);
+    console.log(`✅ Loaded ${domains.length} domains from server (${DATA_DIR})`);
+    return domains;
   } catch (error) {
     console.error('Error reading domains:', error);
     return [];
